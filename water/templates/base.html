@@ -9,18 +9,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
     <title>Document</title>
 </head>
 <body>
 <!-- header -->    
 <div class="navbar" style="background: linear-gradient(to right, #000046, #1cb5e0);">
    <div class="container">
+      <a href="{% url 'home' %}" style="float: left;color: white;font-size: 35px">Water</a>
+
       <ul class="nav ml-auto float-right">
+
         <li class="nav-item " style="color: white">
+          {% if user.is_authenticated %}
+          <a href="{% url 'info' %}" style="color: white">Edit info</a>&nbsp; &nbsp;
+          <a href="{% url 'incre' %}" style="color: white">Drink</a>&nbsp; &nbsp;
+          <a href="{% url 'list' %}" style="color: white">History & notice</a>&nbsp; &nbsp;
+          <a href="{% url 'chart' %}" style="color: white">Chart</a>&nbsp; &nbsp;
+          <a href="{% url 'logout' %}" style="color: white">logout</a>
+          {% else %}
           <a href="{% url 'register' %}"  style="color: white"> Register</a>  &nbsp; &nbsp;
           <a href="{% url 'login' %}"  style="color: white">Login</a>
+          {% endif %}
+        </li>          <a href="" style="color: white"></a>
 
-        </li>
       </ul>
 
     </div>
@@ -33,6 +45,20 @@
 
 {% endblock %}
 
+
+
+
+<script
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com//jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        {% block jquery %}{% endblock %}
+      })
+      </script>
 <footer style="background: linear-gradient(to right, #000046, #1cb5e0);position: fixed;
 height: 40px;
 bottom: 0;
@@ -45,9 +71,6 @@ display: flex;
 
 <div class="text-center">© 2019 Copyright OYD</div>
 </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
 </body>
 </html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="card">
+
+        <div class="card bg-light">
+        
+                <article class="card-body mx-auto" style="max-width: 600px;">
+
+{{ new_context_entry }}<br>
+
+                 
+{% for post in water %}
+
+</h2>{{ post.accountholder }} you drank {{ post.noofglass }} glass of water at {{ post.date }}</h2><br><br><br>
+
+
+
+
+
+{% endfor %}
+<h3>Hey {{ user }} Make sure you drink 6 liters of water a day</h3>
+<select>
+        {% for element in objectl %}
+        <option value={{ element.id }}></option>{{ element.value }}
+        </select>
+        {% endfor %}
+
+</article>
+
+
+        </div>
+</div>
+
+{% endblock %}

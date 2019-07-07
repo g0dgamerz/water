@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<article class="card-body mx-auto" style="max-width: 400px;">
+    <h3>Input how much glass of water you drink and click on Drink button instantly after you drink</h3>
+    <!-- {% for glass in glass %}
+    {{ glass.noofglass }}
+    {% endfor %} -->
+    <form method="POST">
+            {% csrf_token %}
+            <br>
+
+            {{ form }}
+
+        <input type="submit" value="Drink" onclick="return confirm('Are you sure you drank glass of water not beer?')">
+         <!-- onclick="return confirm('Are you sure you drank 1 glass of water not beer?')"> -->
+
+    </form>
+</article>
+
+
+
+{% endblock %}

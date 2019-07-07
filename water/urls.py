@@ -16,12 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from drink import views
-from drink.views import CreateMyModelView
+from drink.views import saveinfo,HomeView,ChartData
 
 urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('account/',include('account.urls')),
-    path('info/',CreateMyModelView.as_view(),name='info'),
+    path('info/',views.saveinfo,name='info'),
+    path('drink/',views.incre,name='incre'),
+    path('history/',views.list1,name='list'),
+    path('chart/',HomeView.as_view(),name='chart'),
+    path('api/data',views.get_data,name='api'),
+    path('restapi/data',ChartData.as_view())
+
 ]

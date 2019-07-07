@@ -12,10 +12,19 @@ from .forms import SignupForm
 from .tokens import account_activation_token
 from django.core.mail import send_mail
 import logging
+from django.contrib.auth.decorators import login_required
+
 
 
 
 logger = logging.getLogger(__name__)
+
+from django.contrib.auth import logout as django_logout
+
+@login_required
+def logout(request):
+    django_logout(request)
+    return redirect('/')
 
 
 def logins(request):

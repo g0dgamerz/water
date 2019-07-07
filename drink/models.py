@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime    
+
 # Create your models here.
 
 class Infos(models.Model):
@@ -46,6 +48,14 @@ class Infos(models.Model):
         (9,'6.6-7 feet'),
     )
     height=models.IntegerField(choices=HEIGHT_CHOICES)
+    
+    def __str__(self):
+    	return str(self.user)
 
 class Water(models.Model):
-    user = models.ManyToManyField(Infos)
+    accountholder = models.ForeignKey(User,on_delete=models.CASCADE)
+    noofglass = models.IntegerField(default=0)
+    date=models.DateTimeField(default=datetime.now, blank=True)
+    
+    def __str__(self):
+    	return str(self.accountholder)
